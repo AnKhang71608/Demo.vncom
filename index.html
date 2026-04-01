@@ -1,16 +1,68 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>AI Assistant</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
-    <div class="container">
-        <h1>WELCOME TO KHA AN KHANG</h1>
-        <p>Họ tên: Kha An Khang<br>Mssv: 2474802017141</br><br>Lớp thực hành: 0301</br></p>
+
+<div class="app">
+
+    <aside class="sidebar">
+        <button class="new-chat" onclick="newChat()">+ Cuộc trò chuyện mới</button>
+        <div id="history"></div>
+    </aside>
+
+    <main class="chat-container">
+        <header class="chat-header">
+            <div class="bot-info">
+                <span class="bot-icon">🤖</span>
+                <strong>AI Assistant</strong>
+            </div>
+
+            <div class="header-controls">
+                <div class="auth">
+                    <button onclick="showLogin()">Sign in</button>
+                </div>
+
+                <div class="music-control">
+                    <button id="musicToggle" onclick="toggleMusic()">🎵 Music: Off</button>
+                </div>
+            </div>
+        </header>
+
+        <div class="chat-box" id="chatBox">
+            <div class="message bot">Chào mừng đến với AI Assistant! Tôi có thể giúp gì cho bạn?</div>
+        </div>
+
+        <div class="chat-input-container">
+            <div class="chat-input">
+                <input type="text" id="userInput" placeholder="Nhập tin nhắn..." autocomplete="off">
+                <button onclick="sendMessage()">➤</button>
+            </div>
+        </div>
+    </main>
+
+</div>
+
+<div class="modal" id="authModal">
+    <div class="modal-content">
+        <button onclick="closeModal()">×</button>
+        <h3 id="modalTitle">Sign in</h3>
+        <input type="text" id="username" placeholder="Tên tài khoản">
+        <input type="password" id="password" placeholder="Mật khẩu">
+        <button onclick="handleAuth()">Xác nhận</button>
     </div>
+</div>
+
+<audio id="backgroundMusic" loop>
+    <source src="../Music/BelieverAV8.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+<script src="script.js"></script>
 </body>
 </html>
